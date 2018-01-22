@@ -33,7 +33,12 @@ export function rtlifyRules(
 ): void {
   if (getRTL()) {
     const name = rulePairs[index] as string;
-    const value = rulePairs[index + 1] as string;
+    const value = rulePairs[index + 1] as string | undefined;
+
+    // Ignore when a undefined value is passed since IStyle allows undefined
+    if (typeof value === 'undefined') {
+      return;
+    }
 
     if (value.indexOf(NO_FLIP) >= 0) {
       rulePairs[index + 1] = value.replace(/\s*(?:\/\*\s*)?\@noflip\b(?:\s*\*\/)?\s*?/g, '');

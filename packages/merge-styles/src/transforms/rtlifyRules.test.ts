@@ -51,4 +51,12 @@ describe('rtlifyRules', () => {
     expect(rules).toEqual(['cursor', 'hand']);
   });
 
+  it('should ignore when a value does not exist', () => {
+    const rules = ['font-family', ''];
+    delete rules[1];
+
+    rtlifyRules(rules, 0);
+
+    expect(rules).toEqual(['font-family', undefined]);
+  });
 });
