@@ -497,7 +497,9 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
 
   @autobind
   private _onMenuKeyDown(ev: React.KeyboardEvent<HTMLElement>) {
-    if (ev.which === KeyCodes.down) {
+    const handleKeyDownAsClickEvent = !this._isSplitButton && (ev.which === KeyCodes.enter || ev.which === KeyCodes.space);
+
+    if (ev.which === KeyCodes.down || handleKeyDownAsClickEvent) {
       let { onMenuClick } = this.props;
       onMenuClick && onMenuClick(ev, this);
       !ev.defaultPrevented && this._onToggleMenu();
