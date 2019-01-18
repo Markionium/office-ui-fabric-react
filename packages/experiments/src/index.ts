@@ -5,6 +5,7 @@ export * from './CommandBar';
 export * from './FolderCover';
 export * from './Form';
 export * from './LayoutGroup';
+export * from './EmailPreview';
 export * from './Pagination';
 export * from './Persona';
 export * from './PersonaCoin';

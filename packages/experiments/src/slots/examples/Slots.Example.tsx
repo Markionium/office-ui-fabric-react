@@ -1,25 +1,49 @@
 import * as React from 'react';
-import { Button, Stack } from '@uifabric/experiments';
-import { Spinner } from 'office-ui-fabric-react';
-import { stackProps } from './SlotExampleUtils';
+import { Stack, EmailPreview } from '@uifabric/experiments';
 
 // tslint:disable:jsx-no-lambda
 export class SlotsExample extends React.Component<{}, {}> {
   public render(): JSX.Element {
     return (
-      <Stack {...stackProps} maxWidth={400}>
-        <Button
-          // Render function usage
-          root={(rootProps, RootType) => <RootType {...rootProps} />}
-          // Subcomponent props usage
-          stack={{ styles: { root: { background: 'lightblue' } } }}
-          // Shorthand prop usage
-          icon="share"
-          // JSX element usage
-          content={<Spinner />}
-        >
-          Just a button with a spinner as its content.
-        </Button>
+      <Stack>
+        <EmailPreview
+          title="Re: PR Deploys"
+          message="Just as an FYI, experiments was fixed with the merge of this PR: https://github.com/OfficeDev/office-ui-fabric-react/pull/7616"
+          date={new Date().toISOString()}
+        />
+
+        <EmailPreview
+          title="Re: PR Deploys"
+          message="Just as an FYI, experiments was fixed with the merge of this PR: https://github.com/OfficeDev/office-ui-fabric-react/pull/7616"
+          date={new Date().toISOString()}
+          icon={{
+            styles: {
+              root: { padding: '10px' }
+            },
+            iconName: 'Share'
+          }}
+        />
+
+        <EmailPreview
+          title="Re: PR Deploys"
+          message="Just as an FYI, experiments was fixed with the merge of this PR: https://github.com/OfficeDev/office-ui-fabric-react/pull/7616"
+          date={new Date().toISOString()}
+          root={{
+            horizontal: true
+          }}
+        />
+
+        <EmailPreview
+          title="Re: PR Deploys"
+          message="Just as an FYI, experiments was fixed with the merge of this PR: https://github.com/OfficeDev/office-ui-fabric-react/pull/7616"
+          icon={() => <span />}
+          date={{
+            children: new Date().toISOString()
+          }}
+          stack={{
+            horizontal: false
+          }}
+        />
       </Stack>
     );
   }
